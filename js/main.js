@@ -14,21 +14,34 @@ function getJson() {
       console.log(data)
       // Create HTML element and place givenName on page
       for (let i=0; i<7; i++) {
-      let givenName = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Driver.givenName
-      let given_name_text = document.querySelector('#name')
-      given_name_text.innerHTML = givenName
+      // Get Name data
+      let givenName = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.givenName
+      let familyName = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.familyName
+      let fullName = `${givenName} ${familyName}`;
+      document.querySelector(`#name-${i}`).innerHTML = fullName;
 
-      let nationality = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Driver.nationality
-      let nationality_text = document.querySelector('#nat')
-      nationality_text.innerHTML = nationality
+        // get Nationality
+        let nationality = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.nationality
+        document.querySelector(`#nat-${i}`).innerHTML = nationality
 
-      let sponsor = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Constructors[0].name
-      let sponsor_text = document.querySelector('#sponsor')
-      sponsor_text.innerHTML = sponsor
+        //   let nationality_text = document.querySelector('#nat')
+        //   nationality_text.innerHTML = nationality
 
-      let points = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].points
-      let points_text = document.querySelector('#pts')
-      points_text.innerHTML = points
+        // get constructor/sponser data
+        let constructor = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Constructors[0].name
+        document.querySelector(`#sponser-${i}`).innerHTML = constructor
+
+        // let sponsor = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Constructors[0].name
+        // let sponsor_text = document.querySelector('#sponsor')
+        // sponsor_text.innerHTML = sponsor
+
+        // get points data
+        let points = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].points
+        document.querySelector(`#pts-${i}`).innerHTML = points;
+
+        // let points = data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].points
+        // let points_text = document.querySelector('#pts')
+        // points_text.innerHTML = points
       }
 
     })
