@@ -8,7 +8,7 @@
 function getJson() {
     let season = document.querySelector('#season').value;
     let round = document.querySelector('#round').value;
-    fetch(`http://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
+    fetch(`https://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
     .then(response => response.json())
     .then(data => {
       console.log(data)
